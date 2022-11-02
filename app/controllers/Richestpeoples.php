@@ -9,15 +9,8 @@ class Richestpeoples extends Controller
 
   public function index()
   {
-    /*
-     * Haal via de method getFruits() uit de model Fruit de records op
-     * uit de database
-     */
     $countries = $this->countryModel->getCountries();
 
-    /*
-     * Maak de inhoud voor de tbody in de view
-     */
     $rows = '';
     foreach ($countries as $value) {
       $rows .= "<tr>
@@ -36,5 +29,16 @@ class Richestpeoples extends Controller
       'countries' => $rows
     ];
     $this->view('richestpeoples/index', $data);
+  }
+  // Delete
+  public function delete($Id)
+  {
+    $this->countryModel->deleteCountry($Id);
+
+    $data = [
+      'deleteStatus' => "<h1>Het record met Id = $Id is verwijderd</h1>"
+    ];
+    $this->view("richestpeoples/delete", $data);
+    header("Refresh:2; url=" . URLROOT . "/richestpeoples/index");
   }
 }
