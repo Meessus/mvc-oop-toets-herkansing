@@ -9,10 +9,10 @@ class Richestpeoples extends Controller
 
   public function index()
   {
-    $countries = $this->countryModel->getCountries();
+    $richests = $this->countryModel->getRichestpeoples();
 
     $rows = '';
-    foreach ($countries as $value) {
+    foreach ($richests as $value) {
       $rows .= "<tr>
                   <td>$value->Id</td>
                   <td>" . htmlentities($value->Name, ENT_QUOTES, 'ISO-8859-1') . "</td>
@@ -30,13 +30,13 @@ class Richestpeoples extends Controller
     ];
     $this->view('richestpeoples/index', $data);
   }
-  // Delete
+
   public function delete($Id)
   {
-    $this->countryModel->deleteCountry($Id);
+    $this->countryModel->deleteRichest($Id);
 
     $data = [
-      'deleteStatus' => "<h1>Het record met Id = $Id is verwijderd</h1>"
+      'deleteStatus' => "<h1>(Record is succesvol verwijderd)</h1>"
     ];
     $this->view("richestpeoples/delete", $data);
     header("Refresh:2; url=" . URLROOT . "/richestpeoples/index");
