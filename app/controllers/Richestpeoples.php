@@ -26,7 +26,7 @@ class Richestpeoples extends Controller
 
     $data = [
       'title' => '<h1>De vijf rijkste mensen ter wereld</h1>',
-      'countries' => $rows
+      'richestpeoples' => $rows
     ];
     $this->view('richestpeoples/index', $data);
   }

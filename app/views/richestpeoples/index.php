@@ -9,7 +9,7 @@
     <th>Delete</th>
   </thead>
   <tbody>
-    <?= $data['countries'] ?>
+    <?= $data['richestpeoples'] ?>
   </tbody>
 </table>
 <a href="<?= URLROOT; ?>/homepages/index">terug</a>
